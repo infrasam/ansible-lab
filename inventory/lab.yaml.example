@@ -1,0 +1,8 @@
+---
+webservers:
+  hosts:
+    lab_instance:
+      ansible_host: <replace_with_ec2_ip>
+      ansible_user: <ec2_user>
+      ansible_ssh_private_key_file: <path_to_key_file>
+

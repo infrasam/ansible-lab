@@ -1,0 +1,27 @@
+---
+- name: Configure nginx web server
+  hosts: webservers
+  become: true # run all tasks as root
+
+  tasks:
+    - name: Install nginx
+      ansible.builtin.dnf:
+        name: nginx
+        state: present # ensure installed, do nothing if already present
+
+    - name: Start and enable nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started # running now
+        enabled: true  # start on boot
+
+    - name: Create index page
+      ansible.builtin.copy:
+        content: |
+          <html>
+          <body>
+          <h1>Hello from Ansible!</h1>
+          <p>This page was deployed by Ansible on {{ inventory_hostname }}</p>
+          </body>
+          </html>
+        dest: /usr/share/nginx/html/index.html
