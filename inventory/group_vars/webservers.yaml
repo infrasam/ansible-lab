@@ -1,0 +1,4 @@
+---
+environment_name: lab
+nginx_port: 80
+app_name: "terraform-lab"
